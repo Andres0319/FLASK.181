@@ -4,13 +4,11 @@
     
     {% block body %}
 
+<div class="mt-5 mb-5">
+   
+    <h1 class= "display-1 text-center">Gestion de albums</h1>
+    </div>
     
-    <br>
-    <br>
-    <h1>Gestion de albums</h1>
-    <br>
-    <br>
-
     {% with mensajes= get_flashed_messages() %}
        {% if mensajes %}
           {% for msj in mensajes %}
@@ -19,22 +17,41 @@
        {% endif %}
     {% endwith %}
 
-    <br>
-    <form action="/guardar" method="POST">
+<div class="container">
+ <div class="row">
 
-        <input type ="text" name="txtTitulo" placeholder="Escribe titulo">
-        <input type ="text" name="txtArtista" placeholder="Escribe artisa">
-        <input type ="number" name="txtAnio" placeholder="Escribe Año">
-        
-        <button type="submit">Guardar</button>
+      <div class="col-md-5">
+      <div class="card card-doby mb-5">
 
+      <form action="/guardar" method="POST">
+
+
+<div class="mb-3">
+  <input type ="text" class="form control" name="txtTitulo" placeholder="Escribe titulo">
+</div>
+
+<div class="mb-3">
+  <input type ="text" class="form control" name="txtArtista" placeholder="Escribe artisa">
+</div>
+
+<div class="mb-3">
+  <input type ="number" class="form control" name="txtAnio" placeholder="Escribe Año">
+</div>
+
+<div class="d-grid gap-2">
+        <button type="submit" class="btn btn-outline-success mt-2">Guardar</button>
+</div>
     </form>
-<br>
-<br>
+    
+    </div>
+    
+  </div>
+
+    <div class="col-md-7">
 
 <h1>Albums Guardados</h1>
-<br>
-<table>
+
+<table class="table table-success table-striped">
 
  <thead>
    <tr>
@@ -42,6 +59,7 @@
     <td>Album: </td>
     <td>Artista: </td>
     <td>Año publicacion: </td>
+    <td>Acciones:</td>
    </tr>
  </thead>
 
@@ -53,14 +71,22 @@
         <td> {{alb.2}} </td>
         <td> {{alb.3}} </td>
         <td>
-            <a href=/editar/{{alb.0}}> Editar </a>
-            <a href=/eliminar/{{alb.0}}> Borrar </a>
+            <a href=/editar/{{alb.0}} class="btn btn-warning"> <i class="bi bi-pencil-square"></i></a>
+            <a href=/eliminar/{{alb.0}} class="btn btn-danger" > <i class="bi bi-trash"></i> </a>
         </td>
     </tr>
     {% endfor %}
   </tbody>
 
 </table>
+
+</div> <!--cierra col 7-->
+
+</div> <!--cierra row-->
+    
+</div> <!--cierra row-->
+
+
 
 
 {% endblock %}
